@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+using Neo4j.Driver.Tests.TestBackendDriverInterface;
+
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -55,9 +57,10 @@ namespace Neo4j.Driver.Tests.TestBackend
 
         public override async Task Process()
         {   
-            IDriver driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
+            DriverObject driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
 
-            Session = driver.AsyncSession(SessionConfig);
+			//TODO: This needs to change to a SessionObject that wraps the driver defined type in the dll type
+            Session = driver.AsyncSession(new SessionConfigObject(data.database, data.accessMode, data.bookmarks, data.fetchSize));
 
             await Task.CompletedTask;
         }

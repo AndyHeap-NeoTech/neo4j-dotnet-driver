@@ -43,8 +43,6 @@ namespace Neo4j.Driver.Tests
                 var node3 = node3Mock.Object;
                 node1.Equals(node3).Should().BeTrue();
                 Equals(node1, node3).Should().BeTrue();
-                // TODO: The following test is currently not supported by Moq
-                //node1.GetHashCode().Should().Be(node3.GetHashCode());
             }
         }
 
@@ -69,8 +67,6 @@ namespace Neo4j.Driver.Tests
 
                 rel1.Equals(rel3).Should().BeTrue();
                 Equals(rel1, rel3).Should().BeTrue();
-                // TODO: The following test is currently not supported by Moq
-                //rel1.GetHashCode().Should().Be(rel3.GetHashCode());
             }
         }
 
@@ -95,9 +91,6 @@ namespace Neo4j.Driver.Tests
                 var path3 = path3Mock.Object;
                 path1.Equals(path3).Should().BeTrue();
                 Equals(path1, path3).Should().BeTrue();
-
-                // TODO: The following test is currently not supported by Moq
-                //path1.GetHashCode().Should().Be(path2.GetHashCode());
             }
         }
     }

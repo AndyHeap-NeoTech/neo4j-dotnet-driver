@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Neo4j.Driver;
 
+using Neo4j.Driver.Tests.TestBackendDriverInterface;
+
 
 namespace Neo4j.Driver.Tests.TestBackend
 { 
@@ -16,7 +18,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 
         public override async Task Process()
         {
-            IDriver driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
+            DriverObject driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
             await driver.CloseAsync();                            
         }
 

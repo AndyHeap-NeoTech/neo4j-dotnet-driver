@@ -4,13 +4,15 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 
+using Neo4j.Driver.Tests.TestBackendDriverInterface;
+
 namespace Neo4j.Driver.Tests.TestBackend
 {
     internal class NewDriver : IProtocolObject
     {
         public NewDriverType data { get; set; } = new NewDriverType();
         [JsonIgnore]
-        public IDriver Driver { get; set; }
+        public DriverObject Driver { get; set; }
 
         public class NewDriverType
         {
@@ -22,21 +24,16 @@ namespace Neo4j.Driver.Tests.TestBackend
         void DriverConfig(ConfigBuilder configBuilder)
         {
             if (!string.IsNullOrEmpty(data.userAgent)) configBuilder.WithUserAgent(data.userAgent);
-
-            //Test code...
-            //configBuilder.WithConnectionTimeout(TimeSpan.FromSeconds(1));
-            //configBuilder.WithConnectionIdleTimeout(TimeSpan.FromSeconds(1));
         }
 
         public override async Task Process()
-        {   
-            var authTokenData = data.authorizationToken.data;
-            var authToken = AuthTokens.Custom(authTokenData.principal, authTokenData.credentials, authTokenData.realm, authTokenData.scheme);
+        {
+			var authTokenData = data.authorizationToken.data;
+			var authTokenObject = new AuthTokenObject(authTokenData.principal, authTokenData.credentials, authTokenData.realm, authTokenData.scheme, authTokenData.ticket);
+			Driver = DriverInterface.NewDriver(data.uri, authTokenObject, data.userAgent);
 
-            Driver = GraphDatabase.Driver(data.uri, authToken, DriverConfig);
-            
-            await Task.CompletedTask;
-        }
+			await Task.CompletedTask;
+		}
 
         public override string Respond()
         {

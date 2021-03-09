@@ -24,8 +24,7 @@ namespace Neo4j.Driver.IntegrationTests.Internals
     {
         public static readonly string ClusterDir = Path.Combine(BoltkitHelper.TargetDir, "cluster");
         private const int Cores = 3;
-        //TODO Add readreplicas into the cluster too
-        //private const int ReadReplicas = 2;
+
 
         private const string Password = "cluster";
         private readonly IShellCommandRunner _commandRunner;
