@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Neo4j.Driver;
 
-namespace Neo4j.Driver.Tests.TestBackendDriverInterface
+namespace Neo4j_TestBackendDriverInterface
 {
 	public record AuthTokenObject(string principal, string credentials, string realm, string scheme, string ticket);
 	public record SessionConfigObject(string database, string accessMode, List<string> bookmarks, long fetchsize);
@@ -23,7 +23,7 @@ namespace Neo4j.Driver.Tests.TestBackendDriverInterface
 			await DriverInterface.CloseAsync();
 		}
 
-		public AccessMode GetAccessMode
+		private AccessMode GetAccessMode
 		{
 			get
 			{

@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo4j.Driver.Tests.TestBack
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo4j.Driver.Tests.TestBackendCSharpInterface", "Neo4j.Driver.Tests.TestBackendCSharpInterface\Neo4j.Driver.Tests.TestBackendCSharpInterface.csproj", "{23BF1C58-6375-4B8F-89BB-6E0DEE4E04D6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Neo4j.Driver.Tests.TestBackendCBindInterface", "Neo4j.Driver.Tests.TestBackendCBindInterface\Neo4j.Driver.Tests.TestBackendCBindInterface.vcxproj", "{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -210,6 +212,29 @@ Global
 		{23BF1C58-6375-4B8F-89BB-6E0DEE4E04D6}.ReleaseSigned|x64.Build.0 = Release|Any CPU
 		{23BF1C58-6375-4B8F-89BB-6E0DEE4E04D6}.ReleaseSigned|x86.ActiveCfg = Release|Any CPU
 		{23BF1C58-6375-4B8F-89BB-6E0DEE4E04D6}.ReleaseSigned|x86.Build.0 = Release|Any CPU
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Debug|Any CPU.Build.0 = Debug|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Debug|x64.ActiveCfg = Debug|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Debug|x64.Build.0 = Debug|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Debug|x86.ActiveCfg = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Debug|x86.Build.0 = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.DebugDelaySigned|Any CPU.ActiveCfg = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.DebugDelaySigned|Any CPU.Build.0 = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.DebugDelaySigned|x64.ActiveCfg = Debug|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.DebugDelaySigned|x64.Build.0 = Debug|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.DebugDelaySigned|x86.ActiveCfg = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.DebugDelaySigned|x86.Build.0 = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Release|x64.ActiveCfg = Release|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Release|x64.Build.0 = Release|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Release|x86.ActiveCfg = Release|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.Release|x86.Build.0 = Release|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.ReleaseSigned|Any CPU.ActiveCfg = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.ReleaseSigned|Any CPU.Build.0 = Debug|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.ReleaseSigned|x64.ActiveCfg = Release|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.ReleaseSigned|x64.Build.0 = Release|x64
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.ReleaseSigned|x86.ActiveCfg = Release|Win32
+		{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}.ReleaseSigned|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
