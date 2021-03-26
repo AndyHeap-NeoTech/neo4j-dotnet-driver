@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo4j.Driver.Simple", "Neo4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo4j.Driver.Tests.TestBackend", "Neo4j.Driver.Tests.TestBackend\Neo4j.Driver.Tests.TestBackend.csproj", "{D68071A7-6012-43BD-9C65-146D1D22B931}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo4j.Driver.Tests.TestBackendCSharpInterface", "Neo4j.Driver.Tests.TestBackendCSharpInterface\Neo4j.Driver.Tests.TestBackendCSharpInterface.csproj", "{23BF1C58-6375-4B8F-89BB-6E0DEE4E04D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo4j.Driver.Tests.TestBackendDotNetInterface", "Neo4j.Driver.Tests.TestBackendCSharpInterface\Neo4j.Driver.Tests.TestBackendDotNetInterface.csproj", "{23BF1C58-6375-4B8F-89BB-6E0DEE4E04D6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Neo4j.Driver.Tests.TestBackendCBindInterface", "Neo4j.Driver.Tests.TestBackendCBindInterface\Neo4j.Driver.Tests.TestBackendCBindInterface.vcxproj", "{D019DFA3-497B-4BD3-994E-9C54F0F35E9C}"
 EndProject
