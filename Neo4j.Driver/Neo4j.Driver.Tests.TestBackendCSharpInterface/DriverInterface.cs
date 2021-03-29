@@ -22,13 +22,13 @@ namespace Neo4j_TestBackendDriverInterface
 	}
 
 
-	public class DriverObject
+	public class DriverInterface
 	{
-		private IDriver DriverInterface { get; set; }
+		private IDriver Driver { get; set; }
 		private SessionConfigObject SessionConfig { get; set; }
 		private DriverConfigObject DriverConfig { get; set; }
 
-		public DriverObject(DriverConfigObject driverConfig)
+		public DriverInterface(DriverConfigObject driverConfig)
 		{
 			DriverConfig = driverConfig;
 			var authToken = AuthTokens.Custom(DriverConfig.AuthTokenData.principal, 
@@ -36,29 +36,29 @@ namespace Neo4j_TestBackendDriverInterface
 											  DriverConfig.AuthTokenData.realm, 
 											  DriverConfig.AuthTokenData.scheme);
 
-			DriverInterface = GraphDatabase.Driver(DriverConfig.Uri, authToken, BuildDriverConfig);
+			Driver = GraphDatabase.Driver(DriverConfig.Uri, authToken, BuildDriverConfig);
 		}
 
 		public async Task CloseAsync()
 		{
-			await DriverInterface.CloseAsync();
+			await Driver.CloseAsync();
 		}
 
 		//TODO: This needs to return a SessionObject type defined in this dll wrapper as internally on the C-Bindings version it will call the c functions.
 		public IAsyncSession AsyncSession(SessionConfigObject sessionConfigObj)
 		{
 			SessionConfig = sessionConfigObj;
-			return DriverInterface.AsyncSession(BuildSessionConfig);
+			return Driver.AsyncSession(BuildSessionConfig);
 		}
 
-		public async Task<bool> SupportsMutliDbAsync()
+		public async Task<bool> SupportsMultiDbAsync()
 		{
-			return await DriverInterface.SupportsMultiDbAsync();
+			return await Driver.SupportsMultiDbAsync();
 		}
 
 		public async Task VerifyConnectivityAsync()
 		{
-			await DriverInterface.VerifyConnectivityAsync();
+			await Driver.VerifyConnectivityAsync();
 		}
 
 		private AccessMode GetAccessMode

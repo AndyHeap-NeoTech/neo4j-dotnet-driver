@@ -19,7 +19,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 
 		public override async Task Process()
 		{
-			DriverObject driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
+			DriverInterface driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
 			await driver.VerifyConnectivityAsync();			
 		}
 

@@ -22,7 +22,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 		public override async Task Process()
 		{
 			var driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
-			MutlitDBSupportAvailable = await driver.SupportsMutliDbAsync();
+			MutlitDBSupportAvailable = await driver.SupportsMultiDbAsync();
 		}
 
 		public override string Respond()

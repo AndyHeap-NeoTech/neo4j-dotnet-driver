@@ -57,7 +57,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 
         public override async Task Process()
         {   
-            DriverObject driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
+            DriverInterface driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
 
 			//TODO: This needs to change to a SessionObject that wraps the driver defined type in the dll type
             Session = driver.AsyncSession(new SessionConfigObject(data.database, data.accessMode, data.bookmarks, data.fetchSize));

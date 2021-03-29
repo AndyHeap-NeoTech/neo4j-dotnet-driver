@@ -1,39 +1,71 @@
 #pragma once
 
-#include "AuthTokenObject.h"
-#include "DriverObject.h"
+#include <iostream>
+#include <msclr\marshal.h>
 #include "cbindings.h"
+#include "DriverConfigObject.h"
+#include "SessionConfigObject.h"
 
-using namespace System;
+using namespace System::Runtime::InteropServices;
+using namespace System::IO;
 
-namespace Neo4j_TestBackendDriverInterface
+
+public ref class DriverInterface
 {
-	public ref class DriverInterface
-	{
-	private:
-		static String^ _userAgent;
+private:
+	neo4j_handle _driverInterface;
+	SessionConfigObject^ _sessionConfig;
+	IntPtr _uriString;
 
-		DriverInterface() {};
-		~DriverInterface() {};
-
-	public:
-
-		static DriverObject^ NewDriver(String^ uri, AuthTokenObject auth, String^ userAgent)
+public:
+	DriverInterface(DriverConfigObject newConfig)
+	{	
+		_uriString = Marshal::StringToHGlobalAnsi(newConfig._uri);
+		neo4j_error* err = NULL;
+		neo4j_driverconfig driverConfig;
+		neo4j_handle driverInterface = 0;
+		
+		driverConfig.uri = (char*)_uriString.ToPointer();
+		
+		if (!neo4j_driver_create(&driverConfig, &driverInterface, &err))
 		{
-			_userAgent = userAgent;
+			String^ errorString = gcnew String(err->desc);
+			Console::WriteLine(errorString);
 
-			neo4j_driverconfig driverConfig;
-			neo4j_error* err = NULL;
-			neo4j_handle driverHandle = 0;
-
-			driverConfig.uri = "neo4j://localhost";
-
-			neo4j_driver_create(&driverConfig, &driverHandle, &err);
+			Exception^ ex = gcnew Exception(errorString);
+			neo4j_err_free(&err);
 			
-			//TODO: How to handle errors and report across the dll boundary. Possibly an exception is ok as this is .net calling into this method.
-			
-			return gcnew DriverObject(driverHandle);
-
+			throw (Exception^)ex;
 		}
+
+		_driverInterface = driverInterface;
 	};
-}
+
+	~DriverInterface() 
+	{
+		Marshal::FreeHGlobal(_uriString);
+	}
+
+	void CloseAsync()
+	{
+		neo4j_driver_destroy(_driverInterface);
+	}
+
+	/*public IAsyncSession AsyncSession(SessionConfigObject sessionConfigObj)
+	{
+
+	}*/
+
+	bool SupportsMultiDbAsync()
+	{
+		throw gcnew NotImplementedException("Sup[portsMultiDbAsync not implemented yet in CBindings");
+		//TODO: SupportsMultiDbAsync
+		return false;
+	}
+
+	void VerifyConnectivityAsync()
+	{
+		throw gcnew NotImplementedException("VerifyConectivityAsyc not implemented yet in CBindings");
+	}
+	
+};

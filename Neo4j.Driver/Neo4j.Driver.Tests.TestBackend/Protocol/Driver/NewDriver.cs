@@ -13,7 +13,7 @@ namespace Neo4j.Driver.Tests.TestBackend
     {
         public NewDriverType data { get; set; } = new NewDriverType();
         [JsonIgnore]
-        public DriverObject Driver { get; set; }
+        public DriverInterface Driver { get; set; }
 		[JsonIgnore]
 		private Controller Control { get; set; }
 
@@ -42,7 +42,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 				AddressResolver = AddressResolverCallback
 			};
 
-			Driver = new DriverObject(driverConfig);
+			Driver = new DriverInterface(driverConfig);
 			await Task.CompletedTask;
 		}
 

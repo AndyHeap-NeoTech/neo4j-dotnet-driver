@@ -3,7 +3,7 @@ using namespace System;
 
 public ref class AuthTokenObject
 {
-private:
+public:
 	String^ _principle;
 	String^ _credentials;
 	String^ _realm;
