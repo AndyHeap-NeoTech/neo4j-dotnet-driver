@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
-using Neo4j.Driver;
+
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -58,8 +59,10 @@ namespace Neo4j.Driver.Tests.TestBackend
 
         public override async Task Process()
         {
+			var txConfig = new TransactionConfigObject(data.timeout, (data.txMeta.Count > 0) ? data.txMeta : null);
+
             var newSession = (NewSession)ObjManager.GetObject(data.sessionId);
-            IResultCursor cursor = await newSession.Session.RunAsync(data.cypher, ConvertParameters(data.parameters), TransactionConfig).ConfigureAwait(false);
+            ResultCursorInterface cursor = await newSession.Session.RunAsync(data.cypher, ConvertParameters(data.parameters), txConfig).ConfigureAwait(false);
 
             var result = ProtocolObjectFactory.CreateObject<SessionResult>();
 			result.Results = cursor;

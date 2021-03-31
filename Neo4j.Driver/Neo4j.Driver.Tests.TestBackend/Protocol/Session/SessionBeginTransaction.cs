@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
+using Neo4j_TestBackendDriverInterface;
+
 namespace Neo4j.Driver.Tests.TestBackend
 {
     internal class SessionBeginTransaction : IProtocolObject
@@ -22,21 +24,12 @@ namespace Neo4j.Driver.Tests.TestBackend
 			public int timeout { get; set; } = -1;
         }
 
-        void TransactionConfig(TransactionConfigBuilder configBuilder)
-        {
-            if (data.timeout != -1)
-            {
-                var time = TimeSpan.FromMilliseconds(data.timeout);
-                configBuilder.WithTimeout(time);
-            }
-
-            if (data.txMeta.Count > 0) configBuilder.WithMetadata(data.txMeta);
-        }
-
 		public override async Task Process(Controller controller)
 		{
+			var txConfig = new TransactionConfigObject(data.timeout, data.txMeta);
 			var sessionContainer = (NewSession)ObjManager.GetObject(data.sessionId);
-			var transaction = await sessionContainer.Session.BeginTransactionAsync(TransactionConfig);
+			var transaction = await sessionContainer.Session.BeginTransactionAsync(txConfig);
+
 			TransactionId = controller.TransactionManagager.AddTransaction(new TransactionWrapper(transaction, async cursor => 
 			{	
 				var result = ProtocolObjectFactory.CreateObject<SessionResult>();

@@ -132,7 +132,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ServerAdressObject.h" />
     <ClInclude Include="SessionConfigObject.h" />
-    <ClInclude Include="Unmanaged.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -147,7 +146,6 @@
     </ClCompile>
     <ClCompile Include="ServerAdressObject.cpp" />
     <ClCompile Include="SessionConfigObject.cpp" />
-    <ClCompile Include="Unmanaged.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

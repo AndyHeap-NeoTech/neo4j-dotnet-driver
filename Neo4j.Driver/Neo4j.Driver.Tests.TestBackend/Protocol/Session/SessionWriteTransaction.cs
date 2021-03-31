@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Neo4j.Driver;
-using System.Diagnostics;
+
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -54,7 +54,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 				}               
 
                 controller.TransactionManagager.RemoveTransaction(TransactionId);
-            }, TransactionConfig);
+            }, new TransactionConfigObject(data.timeout, data.txMeta));
         }
 
         public override string Respond()
@@ -68,12 +68,5 @@ namespace Neo4j.Driver.Tests.TestBackend
 				return ExceptionManager.GenerateExceptionResponse(new ClientException("Error from client in retryable tx")).Encode();
 			} 
         }
-
-		void TransactionConfig(TransactionConfigBuilder configBuilder)
-		{
-			if (data.txMeta.Count > 0) configBuilder.WithMetadata(data.txMeta);
-
-			if (data.timeout > 0) configBuilder.WithTimeout(TimeSpan.FromSeconds(data.timeout));
-		}
 	}
 }

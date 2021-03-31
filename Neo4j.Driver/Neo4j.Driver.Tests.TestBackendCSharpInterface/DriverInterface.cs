@@ -6,8 +6,7 @@ using System.Linq;
 
 namespace Neo4j_TestBackendDriverInterface
 {
-	public record AuthTokenObject(string principal, string credentials, string realm, string scheme, string ticket);
-	public record SessionConfigObject(string database, string accessMode, List<string> bookmarks, long fetchsize);
+	public record AuthTokenObject(string principal, string credentials, string realm, string scheme, string ticket);	
 	public record ServerAddressObject(string host, string port);
 
 
@@ -28,6 +27,7 @@ namespace Neo4j_TestBackendDriverInterface
 		private SessionConfigObject SessionConfig { get; set; }
 		private DriverConfigObject DriverConfig { get; set; }
 
+
 		public DriverInterface(DriverConfigObject driverConfig)
 		{
 			DriverConfig = driverConfig;
@@ -44,11 +44,10 @@ namespace Neo4j_TestBackendDriverInterface
 			await Driver.CloseAsync();
 		}
 
-		//TODO: This needs to return a SessionObject type defined in this dll wrapper as internally on the C-Bindings version it will call the c functions.
-		public IAsyncSession AsyncSession(SessionConfigObject sessionConfigObj)
+		public SessionInterface AsyncSession(SessionConfigObject sessionConfigObj)
 		{
 			SessionConfig = sessionConfigObj;
-			return Driver.AsyncSession(BuildSessionConfig);
+			return new SessionInterface(Driver.AsyncSession(BuildSessionConfig));
 		}
 
 		public async Task<bool> SupportsMultiDbAsync()
@@ -95,6 +94,7 @@ namespace Neo4j_TestBackendDriverInterface
 	{	
 		private Func<Uri, List<ServerAddressObject>> Callback { get; set; }
 		Uri Uri { get; }
+
 
 		public ListAddressResolver(DriverConfigObject config)
 		{	

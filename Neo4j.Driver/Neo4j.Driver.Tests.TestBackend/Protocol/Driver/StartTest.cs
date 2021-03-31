@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {

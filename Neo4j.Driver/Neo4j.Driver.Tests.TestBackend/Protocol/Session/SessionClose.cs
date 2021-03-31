@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Neo4j.Driver;
+
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -15,7 +16,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 
         public override async Task Process()
         {   
-            IAsyncSession session = ((NewSession)ObjManager.GetObject(data.sessionId)).Session;
+            SessionInterface session = ((NewSession)ObjManager.GetObject(data.sessionId)).Session;
             await session.CloseAsync();
         }
 

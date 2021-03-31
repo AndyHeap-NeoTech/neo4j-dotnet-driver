@@ -21,9 +21,6 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Unmanaged.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AuthTokenObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,9 +42,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Unmanaged.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AuthTokenObject.cpp">

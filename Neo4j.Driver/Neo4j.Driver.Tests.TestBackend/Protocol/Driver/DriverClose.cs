@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Neo4j.Driver;
 
 using Neo4j_TestBackendDriverInterface;
 

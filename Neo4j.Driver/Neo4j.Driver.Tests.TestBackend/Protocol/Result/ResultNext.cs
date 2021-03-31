@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Neo4j.Driver;
 using System.Linq;
-using System.Diagnostics;
 
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -12,7 +12,7 @@ namespace Neo4j.Driver.Tests.TestBackend
     {
         public ResultNextType data { get; set; } = new ResultNextType();
         [JsonIgnore]
-        public IRecord Records { get; set; }
+        public ResultRecordInterface Records { get; set; }
 
         public class ResultNextType
         {

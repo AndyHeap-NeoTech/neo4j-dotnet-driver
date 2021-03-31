@@ -8,7 +8,6 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
-//TODO: REMOVE THIS TEST ONLY
-#include <windows.h>
+
 
 #endif //PCH_H

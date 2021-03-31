@@ -13,7 +13,7 @@ namespace Neo4j.Driver.Tests.TestBackend
 	{
 		public NewSessionType data { get; set; } = new NewSessionType();
 		[JsonIgnore]
-		public IAsyncSession Session { get; set; }
+		public SessionInterface Session { get; set; }
 
 		public class NewSessionType
 		{
@@ -59,8 +59,7 @@ namespace Neo4j.Driver.Tests.TestBackend
         {   
             DriverInterface driver = ((NewDriver)ObjManager.GetObject(data.driverId)).Driver;
 
-			//TODO: This needs to change to a SessionObject that wraps the driver defined type in the dll type
-            Session = driver.AsyncSession(new SessionConfigObject(data.database, data.accessMode, data.bookmarks, data.fetchSize));
+			Session = driver.AsyncSession(new SessionConfigObject(data.database, data.accessMode, data.bookmarks, data.fetchSize));
 
             await Task.CompletedTask;
         }

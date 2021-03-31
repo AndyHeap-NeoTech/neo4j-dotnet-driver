@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Neo4j.Driver;
+
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -16,8 +17,8 @@ namespace Neo4j.Driver.Tests.TestBackend
 
         public override async Task Process()
         {
-            IAsyncSession session = ((NewSession)ObjManager.GetObject(data.sessionId)).Session;
-            Bookmarks = session.LastBookmark is null ? Array.Empty<string>() : session.LastBookmark.Values;
+            SessionInterface session = ((NewSession)ObjManager.GetObject(data.sessionId)).Session;
+			Bookmarks = session.LastBookmark.values;
             await Task.CompletedTask;
         }
 

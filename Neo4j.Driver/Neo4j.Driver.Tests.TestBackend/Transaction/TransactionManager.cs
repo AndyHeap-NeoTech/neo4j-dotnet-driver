@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
-using System.Text;
+
+using Neo4j_TestBackendDriverInterface;
+
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
 	internal class TransactionWrapper
 	{
-		public IAsyncTransaction Transaction { get; private set; }
-		private Func<IResultCursor, Task<string>> ResultHandler;
+		public TransactionInterface Transaction { get; private set; }
+		private Func<ResultCursorInterface, Task<string>> ResultHandler;
 
-		public TransactionWrapper(IAsyncTransaction transaction, Func<IResultCursor, Task<string>>resultHandler)
+		public TransactionWrapper(TransactionInterface transaction, Func<ResultCursorInterface, Task<string>>resultHandler)
 		{
 			Transaction = transaction;
 			ResultHandler = resultHandler;
 		}
 
-		public async Task<string> ProcessResults(IResultCursor cursor)
+		public async Task<string> ProcessResults(ResultCursorInterface cursor)
 		{
 			return await ResultHandler(cursor);
 		}

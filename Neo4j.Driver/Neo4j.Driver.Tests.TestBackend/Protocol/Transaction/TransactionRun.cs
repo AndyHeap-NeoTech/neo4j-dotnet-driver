@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Neo4j.Driver;
-using System.Linq;
+
+using Neo4j_TestBackendDriverInterface;
 
 namespace Neo4j.Driver.Tests.TestBackend
 {
@@ -25,7 +25,7 @@ namespace Neo4j.Driver.Tests.TestBackend
         {
             var transactionWrapper = controller.TransactionManagager.FindTransaction(data.txId);
 
-            IResultCursor cursor = await transactionWrapper.Transaction.RunAsync(data.cypher, data.parameters).ConfigureAwait(false);
+            ResultCursorInterface cursor = await transactionWrapper.Transaction.RunAsync(data.cypher, data.parameters).ConfigureAwait(false);
 
 			ResultId = await transactionWrapper.ProcessResults(cursor);
 		}

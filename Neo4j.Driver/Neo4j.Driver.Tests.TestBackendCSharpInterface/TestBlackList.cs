@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Neo4j.Driver.Tests.TestBackend
+namespace Neo4j_TestBackendDriverInterface
 {
-	static class TestBlackList
+	public static class TestBlackList
 	{
 		private static readonly (string Name, string Reason)[] BlackListNames = new []														
 		{ 

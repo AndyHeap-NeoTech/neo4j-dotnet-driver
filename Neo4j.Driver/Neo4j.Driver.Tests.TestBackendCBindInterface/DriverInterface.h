@@ -20,6 +20,8 @@ private:
 public:
 	DriverInterface(DriverConfigObject newConfig)
 	{	
+		//TODO: Add process config method, should throw on unsupported elements (callbacks etc) if set to true.
+
 		_uriString = Marshal::StringToHGlobalAnsi(newConfig._uri);
 		neo4j_error* err = NULL;
 		neo4j_driverconfig driverConfig;
@@ -58,9 +60,7 @@ public:
 
 	bool SupportsMultiDbAsync()
 	{
-		throw gcnew NotImplementedException("Sup[portsMultiDbAsync not implemented yet in CBindings");
-		//TODO: SupportsMultiDbAsync
-		return false;
+		throw gcnew NotImplementedException("SupportsMultiDbAsync not implemented yet in CBindings");
 	}
 
 	void VerifyConnectivityAsync()
@@ -69,3 +69,5 @@ public:
 	}
 	
 };
+
+
