@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Neo4j.Driver.Tests.TestBackendCSharpInterface\Neo4j.Driver.Tests.TestBackendDotNetInterface.csproj" />
+    <ProjectReference Include="..\Neo4j.Driver.Tests.TestBackendDotNetInterface\Neo4j.Driver.Tests.TestBackendDotNetInterface.csproj" />
   </ItemGroup>
     
   
