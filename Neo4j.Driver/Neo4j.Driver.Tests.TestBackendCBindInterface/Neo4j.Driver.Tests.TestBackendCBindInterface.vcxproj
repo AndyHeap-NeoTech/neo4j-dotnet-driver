@@ -126,16 +126,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AuthTokenObject.h" />
+    <ClInclude Include="BookmarkObject.h" />
     <ClInclude Include="DriverConfigObject.h" />
     <ClInclude Include="DriverInterface.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResultCursorInterface.h" />
+    <ClInclude Include="ResultCursorInterfaceExtension.h" />
+    <ClInclude Include="ResultRecordInterface.h" />
+    <ClInclude Include="ResultSummaryInterface.h" />
     <ClInclude Include="ServerAdressObject.h" />
     <ClInclude Include="SessionConfigObject.h" />
+    <ClInclude Include="SessionInterface.h" />
+    <ClInclude Include="TestBlackList.h" />
+    <ClInclude Include="TransactionConfigObject.h" />
+    <ClInclude Include="TransactionInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="AuthTokenObject.cpp" />
+    <ClCompile Include="BookmarkObject.cpp" />
     <ClCompile Include="DriverConfigObject.cpp" />
     <ClCompile Include="DriverInterface.cpp" />
     <ClCompile Include="pch.cpp">
@@ -144,8 +154,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ResultCursorInterface.cpp" />
+    <ClCompile Include="ResultCursorInterfaceExtension.cpp" />
+    <ClCompile Include="ResultRecordInterface.cpp" />
+    <ClCompile Include="ResultSummaryInterface.cpp" />
     <ClCompile Include="ServerAdressObject.cpp" />
     <ClCompile Include="SessionConfigObject.cpp" />
+    <ClCompile Include="SessionInterface.cpp" />
+    <ClCompile Include="TestBlackList.cpp" />
+    <ClCompile Include="TransactionConfigObject.cpp" />
+    <ClCompile Include="TransactionInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

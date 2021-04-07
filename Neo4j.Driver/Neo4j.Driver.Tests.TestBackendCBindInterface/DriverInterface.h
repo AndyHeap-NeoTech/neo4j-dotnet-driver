@@ -5,6 +5,7 @@
 #include "cbindings.h"
 #include "DriverConfigObject.h"
 #include "SessionConfigObject.h"
+#include "SessionInterface.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::IO;
@@ -53,10 +54,10 @@ public:
 		neo4j_driver_destroy(_driverInterface);
 	}
 
-	/*public IAsyncSession AsyncSession(SessionConfigObject sessionConfigObj)
+	SessionInterface^ AsyncSession(SessionConfigObject sessionConfigObj)
 	{
-
-	}*/
+		return gcnew SessionInterface();
+	}
 
 	bool SupportsMultiDbAsync()
 	{
@@ -66,8 +67,7 @@ public:
 	void VerifyConnectivityAsync()
 	{
 		throw gcnew NotImplementedException("VerifyConectivityAsyc not implemented yet in CBindings");
-	}
-	
+	}	
 };
 
 
