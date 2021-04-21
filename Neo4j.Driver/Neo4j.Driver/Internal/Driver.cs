@@ -30,7 +30,7 @@ namespace Neo4j.Driver.Internal
     {
         private int _closedMarker = 0;
 
-        private readonly IConnectionProvider _connectionProvider;
+        public IConnectionProvider _connectionProvider { get; }
         private readonly IAsyncRetryLogic _retryLogic;
         private readonly ILogger _logger;
         private readonly IMetrics _metrics;

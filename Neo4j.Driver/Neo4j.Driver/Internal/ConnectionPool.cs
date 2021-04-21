@@ -20,6 +20,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text;
 using Neo4j.Driver.Internal.Connector;
 using Neo4j.Driver.Internal.Logging;
 using Neo4j.Driver.Internal.Metrics;
@@ -483,5 +484,32 @@ namespace Neo4j.Driver.Internal
             return $"{nameof(_id)}: {{{_id}}}, {nameof(_idleConnections)}: {{{_idleConnections.ToContentString()}}}, " +
                    $"{nameof(_inUseConnections)}: {{{_inUseConnections}}}";
         }
+
+		public string DebugOutputState()
+		{
+			StringBuilder strBuilder = new StringBuilder("", 200);
+			int usage = _maxPoolSize - (_idleConnections.Count + _inUseConnections.Count);
+
+			strBuilder.Append($"{_id}: ");			
+
+			foreach (var conn in _inUseConnections)
+			{
+				string modeLetter = (conn.Mode == AccessMode.Read) ? "R" : "W" ;
+				strBuilder.Append($"{modeLetter} ");				
+			}
+
+			foreach (var conn in _idleConnections)
+			{	
+				strBuilder.Append($". ");
+			}
+
+			for(int i = 0; i < usage; i++)
+			{
+				strBuilder.Append("_ ");
+			}
+
+			return strBuilder.ToString();
+			
+		}
     }
 }

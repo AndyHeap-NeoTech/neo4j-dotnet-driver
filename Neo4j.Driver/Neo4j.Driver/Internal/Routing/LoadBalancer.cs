@@ -265,5 +265,11 @@ namespace Neo4j.Driver.Internal.Routing
         {
             return new LeastConnectedLoadBalancingStrategy(pool, logger);
         }
+
+		public string DebugOutputState()
+		{
+			string output = new StringBuilder(128).Append(_routingTableManager.DebugOutputState() + "\n").ToString();
+			return output + _clusterConnectionPool.DebugOutputState();
+		}
     }
 }

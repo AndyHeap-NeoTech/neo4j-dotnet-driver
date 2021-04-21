@@ -139,6 +139,11 @@ namespace Neo4j.Driver.Internal.Routing
             {
                 throw new NotSupportedException();
             }
-        }
+
+			public string DebugOutputState()
+			{
+				return ToString();
+			}
+		}
     }
 }

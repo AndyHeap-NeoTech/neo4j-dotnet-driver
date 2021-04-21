@@ -28,5 +28,7 @@ namespace Neo4j.Driver.Internal.Routing
         void ForgetServer(Uri uri, string database);
         void ForgetWriter(Uri uri, string database);
         IRoutingTable RoutingTableFor(string database);
+
+		string DebugOutputState();
     }
 }

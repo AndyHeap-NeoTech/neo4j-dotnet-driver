@@ -179,7 +179,23 @@ namespace Neo4j.Driver.Internal.Routing
             return _pools.ToContentString();
         }
 
-        private static IConnectionPool ActivateConnectionPool(Uri uri, IConnectionPool pool)
+		public string DebugOutputState()
+		{
+			string output = string.Empty;
+
+			foreach(var connPool in _pools)
+			{
+				if (connPool.Value.Status == ConnectionPoolStatus.Active)
+				{
+					output += connPool.Value.DebugOutputState();
+					output += '\n';
+				}
+			}
+
+			return output;
+		}
+
+		private static IConnectionPool ActivateConnectionPool(Uri uri, IConnectionPool pool)
         {
             pool.Activate();
             return pool;

@@ -31,5 +31,7 @@ namespace Neo4j.Driver.Internal
         Task<bool> SupportsMultiDbAsync();
 
         IDictionary<string, string> RoutingContext { get; set; }
+
+		string DebugOutputState();
     }
 }

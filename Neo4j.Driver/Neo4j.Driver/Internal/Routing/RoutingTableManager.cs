@@ -287,5 +287,17 @@ namespace Neo4j.Driver.Internal.Routing
 
             return null;
         }
-    }
+
+		public string DebugOutputState()
+		{
+			string output = string.Empty;
+			foreach(var table in _routingTables)
+			{
+				output += table.Value.ToContentString();
+				output += '\n';
+			}
+
+			return output;
+		}
+	}
 }
