@@ -43,6 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="16.9.60">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 </Project>
