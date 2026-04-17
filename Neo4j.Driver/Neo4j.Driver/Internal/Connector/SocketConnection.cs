@@ -96,6 +96,7 @@ internal sealed class SocketConnection : IConnection
     public string Database { get; private set; }
 
     public IDictionary<string, string> RoutingContext => Context.RoutingContext;
+
     public BoltProtocolVersion Version => _client.Version;
 
     /// <summary>Internal Set used for tests.</summary>

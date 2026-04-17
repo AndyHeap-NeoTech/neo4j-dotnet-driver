@@ -122,6 +122,7 @@ internal class RoutingTableManager : IRoutingTableManager
         var rt = await _discovery.DiscoverAsync(conn, null, null, null, _driverContext.HomeDbCache)
             .ConfigureAwait(false);
 
+        rt = RoutingTableAddressResolver.Resolve(rt, _driverContext.Config.Resolver);
         await conn.CloseAsync().ConfigureAwait(false);
         await UpdateAsync(rt).ConfigureAwait(false);
         foreach (var table in rt.Readers)
@@ -335,6 +336,10 @@ internal class RoutingTableManager : IRoutingTableManager
                                     bookmarks,
                                     _driverContext?.HomeDbCache)
                                 .ConfigureAwait(false);
+
+                        newRoutingTable = RoutingTableAddressResolver.Resolve(
+                            newRoutingTable,
+                            _driverContext.Config.Resolver);
 
                         if (!newRoutingTable.IsStale(mode))
                         {
